@@ -1,0 +1,29 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize   # new commits pushed to PR
+      - reopened
+      - closed        # clean up preview when PR is closed/merged
+
+permissions:
+  contents: write        # push preview to gh-pages branch
+  pull-requests: write   # post comment with preview URL
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Skip the deploy step if PR is closed (cleanup still runs via the action)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy / clean up PR preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./            # folder to deploy (repo root = site root)
+          preview-branch: gh-pages  # same branch as production, different subfolder
+          umbrella-dir: pr-preview  # previews live at /pr-preview/pr-{number}/
+          action: auto              # "deploy" on open/sync, "remove" on close
