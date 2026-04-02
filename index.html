@@ -38,6 +38,7 @@
       </button>
       <ul id="nav-menu" role="list">
         <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#quiz" class="nav-link">Quiz</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#history" class="nav-link">History</a></li>
         <li><a href="#figures" class="nav-link">Figures</a></li>
@@ -72,6 +73,78 @@
             <line x1="41"  y1="159" x2="61"  y2="139"/>
           </g>
         </svg>
+      </div>
+    </section>
+
+    <!-- ===== DID YOU KNOW? QUIZ ===== -->
+    <section id="quiz" class="quiz-section" aria-labelledby="quiz-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="quiz-title">Did You Know?</h2>
+          <p class="section-subtitle">Test your Filipino American history knowledge with our quick 5-question quiz!</p>
+        </header>
+        <div class="quiz-section__card">
+          <div class="quiz" id="history-quiz" aria-live="polite">
+            <div class="quiz__questions">
+
+              <div class="quiz__question" data-question="0">
+                <p class="quiz__q-text">1. When did Filipinos first land in North America?</p>
+                <div class="quiz__options" role="group" aria-label="Answer choices for question 1">
+                  <button class="quiz-option" data-correct="true">1587</button>
+                  <button class="quiz-option" data-correct="false">1776</button>
+                  <button class="quiz-option" data-correct="false">1898</button>
+                  <button class="quiz-option" data-correct="false">1965</button>
+                </div>
+              </div>
+
+              <div class="quiz__question" data-question="1">
+                <p class="quiz__q-text">2. Who led Filipino farmworkers in the 1965 Delano Grape Strike?</p>
+                <div class="quiz__options" role="group" aria-label="Answer choices for question 2">
+                  <button class="quiz-option" data-correct="true">Larry Itliong</button>
+                  <button class="quiz-option" data-correct="false">Cesar Chavez</button>
+                  <button class="quiz-option" data-correct="false">Carlos Bulosan</button>
+                  <button class="quiz-option" data-correct="false">Ben Cayetano</button>
+                </div>
+              </div>
+
+              <div class="quiz__question" data-question="2">
+                <p class="quiz__q-text">3. What is the 4th most spoken language in the United States?</p>
+                <div class="quiz__options" role="group" aria-label="Answer choices for question 2">
+                  <button class="quiz-option" data-correct="true">Tagalog</button>
+                  <button class="quiz-option" data-correct="false">Mandarin</button>
+                  <button class="quiz-option" data-correct="false">French</button>
+                  <button class="quiz-option" data-correct="false">Vietnamese</button>
+                </div>
+              </div>
+
+              <div class="quiz__question" data-question="3">
+                <p class="quiz__q-text">4. Who was the first Asian American woman to win an Olympic gold medal?</p>
+                <div class="quiz__options" role="group" aria-label="Answer choices for question 4">
+                  <button class="quiz-option" data-correct="true">Victoria Manalo Draves</button>
+                  <button class="quiz-option" data-correct="false">Michelle Kwan</button>
+                  <button class="quiz-option" data-correct="false">Kristi Yamaguchi</button>
+                  <button class="quiz-option" data-correct="false">Apolo Ohno</button>
+                </div>
+              </div>
+
+              <div class="quiz__question" data-question="4">
+                <p class="quiz__q-text">5. What month is Filipino American History Month?</p>
+                <div class="quiz__options" role="group" aria-label="Answer choices for question 5">
+                  <button class="quiz-option" data-correct="false">January</button>
+                  <button class="quiz-option" data-correct="false">July</button>
+                  <button class="quiz-option" data-correct="true">October</button>
+                  <button class="quiz-option" data-correct="false">December</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="quiz__score" id="quiz-score" hidden>
+              <p class="quiz__score-number"></p>
+              <p class="quiz__score-message"></p>
+              <button class="quiz__retry btn btn--primary">Try Again!</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -518,36 +591,172 @@
           <p class="section-subtitle">Ways to honor Filipino American History Month this October</p>
         </header>
         <ul class="celebrate-grid" role="list">
+
+          <!-- Card 1: Read & Learn -->
           <li class="celebrate-card">
             <div class="celebrate-card__icon" aria-hidden="true">📚</div>
             <h3>Read &amp; Learn</h3>
             <p>Pick up a book by or about Filipino Americans. Start with <em>America Is in the Heart</em> by Carlos Bulosan or <em>Patron Saints of Nothing</em> by Randy Ribay.</p>
+            <button class="student-toggle" aria-expanded="false" aria-controls="student-read">
+              🎒 Student Activities <span class="toggle-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="student-activities" id="student-read" hidden>
+              <div class="grade-tabs" role="group" aria-label="Grade level">
+                <button class="grade-tab grade-tab--active" data-grade="k5">K–5</button>
+                <button class="grade-tab" data-grade="68">6–8</button>
+              </div>
+              <div class="grade-content" data-grade="k5">
+                <p>Read a picture book illustrated by Jose Aruego — look for his name on the cover! Draw your favorite character or scene. Then ask a family member: <strong>"Do you have a favorite Filipino story or folktale?"</strong></p>
+              </div>
+              <div class="grade-content grade-content--hidden" data-grade="68">
+                <p>Read <em>Patron Saints of Nothing</em> by Randy Ribay — a powerful YA novel about identity and belonging for Filipino American teens. Afterward, write a journal entry: <strong>"What does it mean to be proud of where you come from?"</strong></p>
+              </div>
+            </div>
           </li>
+
+          <!-- Card 2: Watch a Film -->
           <li class="celebrate-card">
             <div class="celebrate-card__icon" aria-hidden="true">🎬</div>
             <h3>Watch a Film</h3>
             <p>Explore documentaries like <em>The Delano Manongs</em> or <em>Journey for Justice: The Story of Larry Itliong</em>, or films by Filipino American directors.</p>
+            <button class="student-toggle" aria-expanded="false" aria-controls="student-film">
+              🎒 Student Activities <span class="toggle-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="student-activities" id="student-film" hidden>
+              <div class="grade-tabs" role="group" aria-label="Grade level">
+                <button class="grade-tab grade-tab--active" data-grade="k5">K–5</button>
+                <button class="grade-tab" data-grade="68">6–8</button>
+              </div>
+              <div class="grade-content" data-grade="k5">
+                <p>Watch <em>Journey for Justice: The Story of Larry Itliong</em> with a parent or teacher. After watching, draw a picture of Larry and write one sentence: <strong>"Larry was brave because…"</strong></p>
+              </div>
+              <div class="grade-content grade-content--hidden" data-grade="68">
+                <p>Watch <em>The Delano Manongs</em> documentary. Then discuss: <strong>"What is a labor union? Why did the Filipino farmworkers go on strike? What would you have done in their place?"</strong></p>
+              </div>
+            </div>
           </li>
+
+          <!-- Card 3: Cook & Share -->
           <li class="celebrate-card">
             <div class="celebrate-card__icon" aria-hidden="true">🍚</div>
             <h3>Cook &amp; Share</h3>
             <p>Prepare a Filipino dish — adobo, sinigang, or pancit — and share it with friends and family. Food is a powerful bridge to culture.</p>
+            <button class="student-toggle" aria-expanded="false" aria-controls="student-cook">
+              🎒 Student Activities <span class="toggle-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="student-activities" id="student-cook" hidden>
+              <div class="grade-tabs" role="group" aria-label="Grade level">
+                <button class="grade-tab grade-tab--active" data-grade="k5">K–5</button>
+                <button class="grade-tab" data-grade="68">6–8</button>
+              </div>
+              <div class="grade-content" data-grade="k5">
+                <p>Help an adult make <em>pancit</em> or <em>lumpia</em>! While cooking, ask: <strong>"Where did this recipe come from?"</strong> Practice saying the dish name — <em>pan-SIT</em>, <em>loom-PEE-ah</em>. Try saying "masarap!" (delicious!) when you taste it.</p>
+              </div>
+              <div class="grade-content grade-content--hidden" data-grade="68">
+                <p>Pick a Filipino dish and research its history. Where did it originate? How has it changed in the U.S.? Write a short <strong>"food story"</strong> — the history, the ingredients, and what the dish means to Filipino families — and share it with your class.</p>
+              </div>
+            </div>
           </li>
+
+          <!-- Card 4: Visit a Museum -->
           <li class="celebrate-card">
             <div class="celebrate-card__icon" aria-hidden="true">🏛</div>
             <h3>Visit a Museum or Exhibit</h3>
             <p>Seek out Filipino American History Month exhibits at local cultural centers, libraries, and universities. Many cities host special events in October.</p>
+            <button class="student-toggle" aria-expanded="false" aria-controls="student-museum">
+              🎒 Student Activities <span class="toggle-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="student-activities" id="student-museum" hidden>
+              <div class="grade-tabs" role="group" aria-label="Grade level">
+                <button class="grade-tab grade-tab--active" data-grade="k5">K–5</button>
+                <button class="grade-tab" data-grade="68">6–8</button>
+              </div>
+              <div class="grade-content" data-grade="k5">
+                <p>Draw a picture of a Filipino American monument or place from the Monuments section of this page. Then ask a grandparent or an elder in your family: <strong>"What is your story? Where did our family come from?"</strong></p>
+              </div>
+              <div class="grade-content grade-content--hidden" data-grade="68">
+                <p>Research one Filipino American historical site — like SoMa Pilipinas in San Francisco, Little Manila in Stockton, or the I-Hotel site. Create a short presentation for your class: <strong>What happened there? Why does this place still matter today?</strong></p>
+              </div>
+            </div>
           </li>
+
+          <!-- Card 5: Support Organizations -->
           <li class="celebrate-card">
             <div class="celebrate-card__icon" aria-hidden="true">🤝</div>
             <h3>Support Organizations</h3>
             <p>Donate to or volunteer with organizations like FANHS, the Filipino American Arts Exposition, or local Filipino community groups.</p>
+            <button class="student-toggle" aria-expanded="false" aria-controls="student-orgs">
+              🎒 Student Activities <span class="toggle-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="student-activities" id="student-orgs" hidden>
+              <div class="grade-tabs" role="group" aria-label="Grade level">
+                <button class="grade-tab grade-tab--active" data-grade="k5">K–5</button>
+                <button class="grade-tab" data-grade="68">6–8</button>
+              </div>
+              <div class="grade-content" data-grade="k5">
+                <p>Write a thank-you letter or draw a card for a Filipino American community organization — or for an elder in your life who keeps culture alive. <strong>Tell them what you appreciate about them!</strong></p>
+              </div>
+              <div class="grade-content grade-content--hidden" data-grade="68">
+                <p>Research FANHS — the Filipino American National Historical Society. Why does documenting history matter? Then write a <strong>persuasive letter to your school principal</strong> explaining why Filipino American History Month should be officially recognized at your school.</p>
+              </div>
+            </div>
           </li>
+
+          <!-- Card 6: Amplify Voices -->
           <li class="celebrate-card">
             <div class="celebrate-card__icon" aria-hidden="true">🗣</div>
             <h3>Amplify Filipino American Voices</h3>
             <p>Share Filipino American stories, art, and achievements. Follow and elevate Filipino American creators, journalists, and artists on social media.</p>
+            <button class="student-toggle" aria-expanded="false" aria-controls="student-amplify">
+              🎒 Student Activities <span class="toggle-arrow" aria-hidden="true">▾</span>
+            </button>
+            <div class="student-activities" id="student-amplify" hidden>
+              <div class="grade-tabs" role="group" aria-label="Grade level">
+                <button class="grade-tab grade-tab--active" data-grade="k5">K–5</button>
+                <button class="grade-tab" data-grade="68">6–8</button>
+              </div>
+              <div class="grade-content" data-grade="k5">
+                <p>Create a poster celebrating a Filipino American hero from the timeline on this page. Use bold colors and your best handwriting. Display it in your classroom or hallway — <strong>let everyone see their story!</strong></p>
+              </div>
+              <div class="grade-content grade-content--hidden" data-grade="68">
+                <p>Create a 60-second video, blog post, or social media thread about a Filipino American figure who inspires you. Share it with the hashtag <strong>#FilAmHistoryMonth</strong> and tag your school!</p>
+              </div>
+            </div>
           </li>
+
+          <!-- Card 7: Reading List by Grade -->
+          <li class="celebrate-card celebrate-card--wide">
+            <div class="celebrate-card__icon" aria-hidden="true">📖</div>
+            <h3>Reading List by Grade</h3>
+            <p>Books written for young readers that celebrate Filipino American history, culture, and identity — from picture books to page-turners.</p>
+            <div class="reading-list">
+              <div class="reading-list__col">
+                <h4>Elementary (K–5)</h4>
+                <ul>
+                  <li><em>Journey for Justice: The Life of Larry Itliong</em> — Mabalon &amp; Romasanta <span class="book-note">First children's book about Larry Itliong</span></li>
+                  <li><em>Larry Itliong (My Itty-Bitty Bio)</em> — Virginia Loh-Hagan <span class="book-note">Early reader with timeline &amp; glossary</span></li>
+                  <li><em>The Untold Story of Larry Itliong</em> — Cristina Oxtra <span class="book-note">Ages 8–11; connects Itliong to Cesar Chavez</span></li>
+                  <li><em>Willie Wins</em> — Allan Woodrow <span class="book-note">A boy learns about love and Filipino heritage</span></li>
+                  <li><em>Cora's Pancit</em> — Cara Mia Brizuela <span class="book-note">Family, culture, and cooking together</span></li>
+                  <li><em>Pedro's Yo-Yo's</em> — Rob Peñas <span class="book-note">How a Filipino immigrant changed the toy world</span></li>
+                  <li><em>Filipino Children's Favorite Stories</em> <span class="book-note">13 classic myths &amp; folktales, ages 5–10</span></li>
+                  <li><em>Oh My Kulay</em> <span class="book-note">Learn colors in Tagalog — great for early learners</span></li>
+                </ul>
+              </div>
+              <div class="reading-list__col">
+                <h4>Middle School (6–8)</h4>
+                <ul>
+                  <li><em>Patron Saints of Nothing</em> — Randy Ribay <span class="book-note">YA novel about identity &amp; belonging</span></li>
+                  <li><em>Hello, Universe</em> — Erin Entrada Kelly <span class="book-note">Newbery Medal winner; Filipino American protagonist</span></li>
+                  <li><em>How to Win a Slime War</em> — Mae Respicio <span class="book-note">Includes WWII &amp; Bataan Death March history</span></li>
+                  <li><em>Any Day with You</em> — Mae Respicio <span class="book-note">A teen filmmaker navigating family and identity</span></li>
+                  <li><em>America Is in the Heart</em> — Carlos Bulosan <span class="book-note">Landmark 1946 Manong generation memoir (excerpts)</span></li>
+                  <li><em>The Untold Story of Larry Itliong</em> — Cristina Oxtra <span class="book-note">Also great for grades 6–8</span></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
         </ul>
       </div>
     </section>

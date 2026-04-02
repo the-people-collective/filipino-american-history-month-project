@@ -112,6 +112,107 @@ document.addEventListener('DOMContentLoaded', () => {
     updateArrows(); // initial state
   }
 
+  // === STUDENT ACTIVITY TOGGLES ===
+  document.querySelectorAll('.student-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      const panelId = toggle.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+    });
+  });
+
+  // Grade tab switching (delegated to each .student-activities panel)
+  document.querySelectorAll('.student-activities').forEach(panel => {
+    const tabs = panel.querySelectorAll('.grade-tab');
+    const contents = panel.querySelectorAll('.grade-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const grade = tab.dataset.grade;
+
+        tabs.forEach(t => t.classList.remove('grade-tab--active'));
+        tab.classList.add('grade-tab--active');
+
+        contents.forEach(c => {
+          c.classList.toggle('grade-content--hidden', c.dataset.grade !== grade);
+        });
+      });
+    });
+  });
+
+  // === QUIZ ===
+  const quiz = document.getElementById('history-quiz');
+  if (quiz) {
+    const questions = quiz.querySelectorAll('.quiz__question');
+    const scoreEl   = document.getElementById('quiz-score');
+    const scoreNum  = scoreEl.querySelector('.quiz__score-number');
+    const scoreMsg  = scoreEl.querySelector('.quiz__score-message');
+    const retryBtn  = scoreEl.querySelector('.quiz__retry');
+    let answered = 0;
+    let score = 0;
+
+    const MESSAGES = [
+      "Don't give up — every expert started as a beginner! 💪",
+      "Good start! Read through the timeline to learn more. 📚",
+      "Good start! Read through the timeline to learn more. 📚",
+      "Great job! You know your history! Keep exploring. 🎉",
+      "Great job! You know your history! Keep exploring. 🎉",
+      "Perfect score! You're a Filipino American history expert! 🌟",
+    ];
+
+    questions.forEach(question => {
+      const options = question.querySelectorAll('.quiz-option');
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          const isCorrect = option.dataset.correct === 'true';
+
+          // Mark answer
+          option.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+
+          // If wrong, reveal the correct answer
+          if (!isCorrect) {
+            options.forEach(o => {
+              if (o.dataset.correct === 'true') o.classList.add('is-correct');
+            });
+          }
+
+          // Disable all options for this question
+          options.forEach(o => { o.disabled = true; });
+
+          if (isCorrect) score++;
+          answered++;
+
+          // All questions answered — show score
+          if (answered === questions.length) {
+            quiz.querySelector('.quiz__questions').setAttribute('aria-hidden', 'true');
+            scoreNum.textContent = `${score} / ${questions.length}`;
+            scoreMsg.textContent = MESSAGES[score];
+            scoreEl.hidden = false;
+          }
+        });
+      });
+    });
+
+    // Retry button — reset quiz
+    retryBtn.addEventListener('click', () => {
+      score = 0;
+      answered = 0;
+      questions.forEach(question => {
+        question.querySelectorAll('.quiz-option').forEach(o => {
+          o.disabled = false;
+          o.classList.remove('is-correct', 'is-wrong');
+        });
+      });
+      quiz.querySelector('.quiz__questions').removeAttribute('aria-hidden');
+      scoreEl.hidden = true;
+    });
+  }
+
   // === NOTABLE FIGURES CATEGORY FILTER ===
   if (filterBtns.length && figureCards.length) {
     filterBtns.forEach(btn => {
